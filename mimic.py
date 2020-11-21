@@ -48,16 +48,23 @@ def create_mimic_dict(filename):
     with open(filename, 'r') as f:
         read_file = f.read().split()
         mimic_dict = {'': ['I']}
+        num_words = len(read_file)
         for index, word in enumerate(read_file):
-            print(index, word)
+            # print(index, word)
             if index == len(read_file) - 1:
                 break
             if word in mimic_dict:
                 mimic_dict[word].append(read_file[index + 1])
             else:
                 mimic_dict[word] = [read_file[index + 1]]
-        print(mimic_dict)
+        print(mimic_dict, num_words)
     return mimic_dict
+
+
+# def num_words(mimic_dict):
+#     num_words = len(mimic_dict)
+#     # print(num_words)
+#     return
 
 
 def print_mimic_random(mimic_dict, num_words):
@@ -69,8 +76,13 @@ def print_mimic_random(mimic_dict, num_words):
         - Randomly select a new word from the next-list
         - Repeat this process num_words times
     """
-    # +++your code here+++
-    pass
+
+    print(mimic_dict.items())
+    num_words = len(mimic_dict.items())
+    print(num_words)
+    for pairs in range(num_words):
+        for key, value in mimic_dict.items():
+            print(random.choice(value))
 
 
 def main(args):
