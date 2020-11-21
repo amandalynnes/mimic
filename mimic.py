@@ -20,7 +20,7 @@ You can try adding in line breaks around 70 columns so the output looks
 better.
 """
 
-__author__ = "Amanda Simmons, Peter Mayor"
+__author__ = "Amanda Simmons, Peter Mayor, Waleed"
 
 
 import random
