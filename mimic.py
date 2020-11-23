@@ -20,7 +20,7 @@ You can try adding in line breaks around 70 columns so the output looks
 better.
 """
 
-__author__ = "Amanda Simmons, Peter Mayor, Waleed"
+__author__ = "Amanda Simmons, Peter Mayor, Waleed, Jt"
 
 
 import random
@@ -48,16 +48,15 @@ def create_mimic_dict(filename):
     with open(filename, 'r') as f:
         read_file = f.read().split()
         mimic_dict = {'': ['I']}
-        num_words = len(read_file)
         for index, word in enumerate(read_file):
-
+            print(mimic_dict)
             if index == len(read_file) - 1:
                 break
             if word in mimic_dict:
                 mimic_dict[word].append(read_file[index + 1])
             else:
                 mimic_dict[word] = [read_file[index + 1]]
-        print(mimic_dict, num_words)
+
     return mimic_dict
 
 
@@ -70,13 +69,17 @@ def print_mimic_random(mimic_dict, num_words):
         - Randomly select a new word from the next-list
         - Repeat this process num_words times
     """
-
-    print(mimic_dict.items())
-    num_words = len(mimic_dict.items())
-    print(num_words)
-    for pairs in range(num_words):
-        for key, value in mimic_dict.items():
-            print(key, random.choice(value))
+    start_word = ''
+    print(start_word, end=' ')
+    start_values = mimic_dict[start_word]
+    start_word = random.choice(start_values)
+    for _ in range(num_words):
+        print(start_word, end=' ')
+        if start_word in mimic_dict:
+            start_values = mimic_dict[start_word]
+            start_word = random.choice(start_values)
+        else:
+            start_word = 'I'
 
 
 def main(args):
